@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react'
 
 const ResultContext = createContext();
-const baseUrl = 'https://google-search1.p.rapidapi.com/google-search'
+const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1/'
 
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
@@ -15,13 +15,16 @@ export const ResultContextProvider = ({ children }) => {
     const response = await fetch(`${baseUrl}${type}`, {
       method: 'GET',
       headers: {
+        'X-User-Agent': 'desktop',
+        'X-Proxy-Location': 'EU',
         'X-RapidAPI-Key': '0817aa50f8mshee391710819d9c8p104573jsnbd9cbdbd7ba6',
-        'X-RapidAPI-Host': 'google-search1.p.rapidapi.com'
+        'X-RapidAPI-Host': 'google-search3.p.rapidapi.com'
       }
     });
 
     const data = await response.json()
     console.log(data);
+
     setResults(data);
     setIsLoading(false)
   }
