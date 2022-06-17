@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import Search from './Search'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Search from './Search';
 
 const Navbar = ({ darkTheme, setDarkTheme }) => {
   return (
@@ -15,7 +15,7 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
       </div>
       <Search/>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
