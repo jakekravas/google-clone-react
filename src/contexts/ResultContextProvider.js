@@ -6,9 +6,8 @@ const baseUrl = 'https://google-search3.p.rapidapi.com/api/v1';
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('elon musk');
+  const [searchTerm, setSearchTerm] = useState('');
 
-  // videos, search, /images
   const getResults = async type => {
     setIsLoading(true);
 
@@ -19,10 +18,6 @@ export const ResultContextProvider = ({ children }) => {
         'X-Proxy-Location': 'EU',
         'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
         'X-RapidAPI-Host': 'google-search3.p.rapidapi.com'
-        // 'X-User-Agent': 'desktop',
-        // 'X-Proxy-Location': 'EU',
-        // 'X-RapidAPI-Key': '0817aa50f8mshee391710819d9c8p104573jsnbd9cbdbd7ba6',
-        // 'X-RapidAPI-Host': 'google-search3.p.rapidapi.com'
       }
     });
 
@@ -36,12 +31,11 @@ export const ResultContextProvider = ({ children }) => {
       setResults(data.results);
     };
 
-    console.log(data);
     setIsLoading(false);
   }
 
   return (
-    <ResultContext.Provider value={{ getResults, results, searchTerm, setSearchTerm, isLoading }}>
+    <ResultContext.Provider value={{ getResults, results, setResults, searchTerm, setSearchTerm, isLoading }}>
       {children}
     </ResultContext.Provider>
   )

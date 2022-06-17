@@ -21,10 +21,8 @@ const Results = () => {
   }, [searchTerm, location.pathname]);
 
   if (isLoading) return <Loading/>
-  console.log(location.pathname);
-
+  
   switch (location.pathname) {
-
     // Render search results
     case '/search':
       return (
