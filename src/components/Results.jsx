@@ -9,7 +9,7 @@ const Results = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location);
+    
     if (searchTerm) {
       if (location.pathname == '/videos') {
         getResults(`/search/q=${searchTerm} videos`);
@@ -18,11 +18,6 @@ const Results = () => {
       }
     }
 
-    // getResults('search/q=javascript&num=40');
-    // getResults('search/q=kate+upton');
-    // getResults('search/q=kate+upton');
-    // getResults('/image/q=tesla');
-    // getResults(`${location.pathname}/q=${searchTerm}`);
   }, [searchTerm, location.pathname]);
 
   if (isLoading) return <Loading/>
@@ -74,12 +69,12 @@ const Results = () => {
                 <p className='text-lg dark:text-blue-300 text-blue-700'>
                   {title}
                 </p>
-                <div className='flex gap-4'>
-                  <a href={source?.href} taret='_blank' rel='noreferrer'>
-                    {source?.href}
-                  </a>
-                </div>
               </a>
+              <div className='flex gap-4'>
+                <a href={source?.href} taret='_blank' rel='noreferrer'>
+                  {source?.href}
+                </a>
+              </div>
             </div>
           ))}
         </div>
