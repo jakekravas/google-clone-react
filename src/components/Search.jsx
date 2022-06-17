@@ -10,6 +10,7 @@ const Search = () => {
   const [debouncedValue] = useDebounce(text, 300)
 
   useEffect(() => {
+    // When debouncedValue changes, change searchTerm along with it so that getResults fires off in Results component and we get updated data
     if (debouncedValue) setSearchTerm(debouncedValue);
   }, [debouncedValue]);
   

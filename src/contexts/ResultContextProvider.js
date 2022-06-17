@@ -8,9 +8,11 @@ export const ResultContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Get results from API
   const getResults = async type => {
     setIsLoading(true);
 
+    // Response from API
     const response = await fetch(`${baseUrl}${type}`, {
       method: 'GET',
       headers: {
@@ -21,8 +23,10 @@ export const ResultContextProvider = ({ children }) => {
       }
     });
 
+    // Data from API response
     const data = await response.json();
 
+    // Setting results
     if (type.includes('/news')) {
       setResults(data.entries);
     } else if (type.includes('/image')) {
